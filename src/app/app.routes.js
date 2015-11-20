@@ -4,43 +4,31 @@ angular.module('app').config([
 
     // For any unmatched urls
     $urlRouterProvider.otherwise( ($injector) => {
-      $injector.get('$state').go('state1.index');
+      $injector.get('$state').go('dashboard');
     });
 
     // Now set up the states
     $stateProvider
-      .state('state1', {
-        abstract: true,
+      .state('dashboard', {
+        url: '/dashboard',
         views: {
           main: {
-            templateUrl: '../app/layouts/state1/main.html'
+            templateUrl: '../app/components/dashboard/dashboard.html',
+            controller: 'DashboardController',
+            controllerAs: 'dashboardCtrl'
           }
         }
       })
-      .state('state1.index', {
-        url: '/state1',
-        views: {
-          innerComponent: {
-            templateUrl: '../app/components/component1/component1.html'
-          }
-        }
-      })
-      .state('state2', {
-        abstract: true,
+      .state('participants', {
+        url: '/participants',
         views: {
           main: {
-            templateUrl: '../app/layouts/state2/main.html'
+            templateUrl: '../app/components/participants/participants.html',
+            controller: 'ParticipantsController',
+            controllerAs: 'participantsCtrl'
           }
         }
       })
-      .state('state2.index', {
-        url: '/state2',
-        views: {
-          innerComponent: {
-            templateUrl: '../app/components/component2/component2.html'
-          }
-        }
-      });
 
     $locationProvider.html5Mode(true);
   }

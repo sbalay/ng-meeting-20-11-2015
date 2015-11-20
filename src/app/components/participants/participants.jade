@@ -1,0 +1,8 @@
+.center
+  .participant-container(ng-repeat='participant in participantsCtrl.participants')
+    h6
+      | {{ participant }}
+  .text-danger(ng-show='participantsCtrl.errorFlag')
+      | Boom!
+  .text-info(ng-show='participantsCtrl.loading')
+    | Loading!
